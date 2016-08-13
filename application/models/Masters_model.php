@@ -8,14 +8,80 @@ class Masters_model extends CI_Model
 		ini_set('display_errors',1);
 error_reporting(E_ALL);
     }
-       
+      
+
+  function  list_states($state_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('ms.state_id,ms.status,ms.state_name,mc.country_name');
+		$this->db->from('master_state ms');
+		$this->db->join('master_country mc','mc.country_id = ms.country_id');
+		
+     if($state_id!="")
+        {
+           	$this->db->where('ms.state_id',$state_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+
+    }
+
+
+
+
+
+
+
+	  
     function  list_city($city_id='')
     {
-			$this->db->select('*');
+		
+					$this->db->distinct();
+$this->db->select('mc.city_id,mc.state_id,mc.status,mc.city_name,ms.state_name');
+		$this->db->from('master_city mc');
+		$this->db->join('master_state ms','mc.state_id = ms.state_id');
+		
+     if($city_id!="")
+        {
+           	$this->db->where('ml.city_id',$city_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+		
+		
+		
+			/*$this->db->select('*');
 		$this->db->from('master_city');
 		  if($city_id!="")
         {
            	$this->db->where('id',$city_id);
+        }
+		
+		$query = $this->db->get();
+		$query = $query->result_array();
+		return $query;
+		*/
+    }
+	
+	function list_country($country_id='')
+	{
+				$this->db->select('*');
+		$this->db->from('master_country');
+		  if($country_id!="")
+        {
+           	$this->db->where('id',$country_id);
         }
 		
 		$query = $this->db->get();

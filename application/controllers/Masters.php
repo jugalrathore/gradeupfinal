@@ -14,6 +14,14 @@ class Masters extends CI_Controller{
         global $menudata;
         parent:: __construct();
         
+		//error_reporting(1);
+
+// Report runtime errors
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+// Report all errors
+//error_reporting(E_ALL);
+
         $this->load->helper("url");		
         $this->load->library('form_validation');
         
@@ -42,15 +50,117 @@ class Masters extends CI_Controller{
 //$this->load->view('footer');
     }
 	
+			function list_country()
+	{ 
+
+		   $this->load->view('header',$this->data);        
+        $this->data['country_details']=$this->Masters_model->list_country();
+        $this->load->view('Masters/list_country',$this->data);
+        $this->load->view('footer');
+
+	}
+	
+			function list_states()
+	{ 
+
+		   $this->load->view('header',$this->data);        
+        $this->data['state_details']=$this->Masters_model->list_states();
+        $this->load->view('Masters/list_states',$this->data);
+        $this->load->view('footer');
+
+	}
+	
+	
+	
+	
+	
 		function list_city()
 	{ 
 
 		   $this->load->view('header',$this->data);        
-        $this->data['slokas_details']=$this->Masters_model->list_city();
+        $this->data['city_list']=$this->Masters_model->list_city();
         $this->load->view('Masters/view',$this->data);
         $this->load->view('footer');
 
 	}
+	
+			function edit_city($city_id)
+	{ 
+
+	$this->form_validation->set_rules('city', 'City Name', 'trim|required');
+			if($this->form_validation->run() == FALSE)
+		{
+	
+	
+		   $this->load->view('header',$this->data);        
+		           $this->data['state_list']=$this->Masters_model->list_states();
+        $this->data['city_details']=$this->Masters_model->list_city($city_id);
+        $this->load->view('Masters/edit_city',$this->data);
+        $this->load->view('footer');
+		
+		}
+				else
+		{
+			
+		$data=array(
+		'state_id'=>$this->input->post('state'),
+			'city_name'=>$this->input->post('city')
+		);
+				$query = $this->db->insert('master_city', $data);
+			
+			 redirect('Masters/view');	
+			
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		function add_city()
+	{ 
+$this->form_validation->set_rules('city', 'City Name', 'trim|required');
+			if($this->form_validation->run() == FALSE)
+		{
+		   $this->load->view('header',$this->data);        
+        $this->data['state_list']=$this->Masters_model->list_states();
+		
+        $this->load->view('Masters/add_city',$this->data);
+        $this->load->view('footer');
+		}
+		else
+		{
+			
+		$data=array(
+		'state_id'=>$this->input->post('state'),
+			'city_name'=>$this->input->post('city')
+		);
+				$query = $this->db->insert('master_city', $data);
+			
+			 redirect('Masters/view');	
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+
+	}
+	
+	
+	
+	
+	
 	
 			function list_location()
 	{ 
@@ -104,7 +214,7 @@ $this->data['slokas_details']=$this->Masters_model->list_units();
 	}
 	
 	
-
+/*
 	function add_city()
 	{
 		$this->form_validation->set_rules('cname', 'City Name', 'trim|required');
@@ -130,7 +240,7 @@ $this->data['slokas_details']=$this->Masters_model->list_units();
 		
 	}
 	
-	
+	*/
 	
 	
 	function add_pstatus()

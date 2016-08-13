@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Sign In - Vascon Admin</title>
+	<title>Sign In - Gradeup Admin Admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
 	<!-- Open Sans font from Google CDN -->
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="signin-info" style="background-color: #D68F14">
 			<a href="<?=site_url('home')?>" class="logo">
 		<!--		<img src="<?=base_url()?>assets/images/logo.png" alt="" style="margin-top: -5px;">-->
-				<center>Vascon Admin Panel</center>
+				<center>GradeUp Admin Panel</center>
 			</a> <!-- / .logo -->
 			 <!-- / .slogan -->
 			<!--<ul>

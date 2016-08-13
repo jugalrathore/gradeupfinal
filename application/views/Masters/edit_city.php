@@ -5,11 +5,11 @@
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>
         <li><a href="#">Masters</a></li>
-        <li class="active"><a href="#">Add City</a></li>
+        <li class="active"><a href="#">Edit City</a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Add City</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Edit City</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
@@ -36,7 +36,7 @@
                                 <td>City Name</td>
                                 <td>
                                     <input type="hidden" id="id" name="id" value="" class="form-control" />
-                                    <input type="text" id="city" name="city" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+             <input type="text" id="city" name="city" class="form-control" value="<?=isset($city_details['city_name'])?$city_details['city_name']:''?>" /> 
                                 <span style="color:red;"><?php echo form_error('title');?></span>
                                 </td>
                             </tr> 
@@ -50,7 +50,7 @@
                                     for($i=0;$i<count($state_list);$i++)
                                     {
                                 ?>
-                                <option value="<?=$state_list[$i]['state_id']?>"><?=$state_list[$i]['state_name']?></option>
+     <option value="<?=$state_list[$i]['state_id']?>" <?php if($state_list[$i]['state_id']==$city_details['state_id']){echo "selected";}  ?>><?=$state_list[$i]['state_name']?></option>
                                 <?php
                                     }
                                 ?>

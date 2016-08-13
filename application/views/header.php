@@ -95,6 +95,19 @@
 				<li class="mm-dropdown mm-dropdown-root open">
 							<a tabindex="-1" href="#"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text mmc-dropdown-delay animated fadeIn">Masters</span><span class="label label-info"></span></a>
 							<ul class="mmc-dropdown-delay animated fadeInLeft" style="">
+							
+								<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_country" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Country</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_states" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">States</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+								
 								<li class="mm-dropdown">
 								<a tabindex="-1" href="<?=base_url()?>Masters/list_city" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">City</span><span class="label label-info"></span></a>
 								

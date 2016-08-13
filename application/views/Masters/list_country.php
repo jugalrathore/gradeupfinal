@@ -9,15 +9,15 @@
 <div id="content-wrapper">
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>        
-        <li class="active"><a href="#">City Master</a></li>
+        <li class="active"><a href="#">Country Master</a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;City Master</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Country Master</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
-                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="<?=base_url($currentModule."/add_city")?>"><span class="btn-label icon fa fa-plus"></span>Add City</a></div>                        
+                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="<?=base_url($currentModule."/add_location")?>"><span class="btn-label icon fa fa-plus"></span>Add Country</a></div>                        
                     <div class="visible-xs clearfix form-group-margin"></div>
                     <form class="pull-right col-xs-12 col-sm-6" action="">
                         <div class="input-group no-margin">
@@ -28,7 +28,7 @@
                                     for($i=0;$i<count($slokas_details);$i++)
                                     {
                                 ?>
-                                <option value="<?=$slokas_details[$i]['name']?>"><?=$slokas_details[$i]['name']?></option>
+                                <option value="<?=$slokas_details[$i]['location_name']?>"><?=$slokas_details[$i]['location_name']?></option>
                                 <?php
                                     }
                                 ?>
@@ -46,7 +46,7 @@
             <div class="col-sm-12">
                 <div class="panel">
                 <div class="panel-heading">
-                        <span class="panel-title">City List</span>
+                        <span class="panel-title">Country List</span>
                         <div class="holder"></div>
                 </div>
                 <div class="panel-body">
@@ -55,24 +55,26 @@
                         <thead>
                             <tr>
                                     <th>Sr. No.</th>
-                                    <th>City Name</th>
-                                 <th>State Name</th>
+									<th>Country Name</th>
+                                   
+                               
                                <th>Options</th>
                             </tr>
                         </thead>
                         <tbody id="itemContainer">
                             <?php
                             $j=1;
-                            for($i=0;$i<count($city_list);$i++)
+                            for($i=0;$i<count($country_details);$i++)
                             {
                             ?>
-                            <tr <?=$city_list[$i]["status"]=="N"?"style='background-color:#FBEFF2'":""?>>
+                            <tr <?=$country_details[$i]["status"]=="N"?"style='background-color:#FBEFF2'":""?>>
                                 <td><?=$j?></td>
-                                <td><?=$city_list[$i]['city_name']?></td>
-                          <td><?=$city_list[$i]['state_name']?></td>
+								   <td><?=$country_details[$i]['country_name']?></td>
+                              
+                       
                               <td>
-                                    <a href="<?=base_url($currentModule."/edit_city/".$city_list[$i]['city_id'])?>"><i class="fa fa-edit"></i></a>                                                                        
-                                    <a href='<?=$city_list[$i]["status"]=="Y"?"disable/".$city_list[$i]["city_id"]:"enable/".$city_list[$i]["city_id"]?>'><i class='fa <?=$city_list[$i]["status"]=="Y"?"fa-ban":"fa-check"?>' title='<?=$city_list[$i]["status"]=="Y"?"Disable":"Enable"?>'></i></a>
+                                    <a href="<?=base_url($currentModule."/edit/".$country_details[$i]['country_id'])?>"><i class="fa fa-edit"></i></a>                                                                        
+                                    <a href='<?=$country_details[$i]["status"]=="Y"?"disable/".$country_details[$i]["country_id"]:"enable/".$country_details[$i]["country_id"]?>'><i class='fa <?=$country_details[$i]["status"]=="Y"?"fa-ban":"fa-check"?>' title='<?=$country_details[$i]["status"]=="Y"?"Disable":"Enable"?>'></i></a>
                                 </td>
                             </tr>
                             <?php
