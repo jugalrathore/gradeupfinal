@@ -215,7 +215,10 @@ $query = $query->result_array();
         //echo $this->db->last_query(); //To print the query
 		
 		return $query;
-	 }
+	   
+
+
+	}
 
 	function add_division(){
 

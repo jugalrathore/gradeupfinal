@@ -128,7 +128,7 @@
 								</li>
 
 								<li class="mm-dropdown">
-								<a tabindex="-1" href="<?=base_url()?>Masters/list_divisions" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Division</span><span class="label label-info"></span></a>
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_section" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Section</span><span class="label label-info"></span></a>
 								
 								</li>
 								
