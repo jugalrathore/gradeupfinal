@@ -5,11 +5,11 @@
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>
         <li><a href="#">Masters</a></li>
-        <li class="active"><a href="#">Add City</a></li>
+        <li class="active"><a href="#">Add User</a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Add City</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Add User</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
@@ -36,28 +36,28 @@
 			
 			?>
                     <div class="table-info">
-                        <?php echo form_open_multipart('Masters/add_city');?>
+                        <?php echo form_open_multipart('Masters/add_user');?>
                             <table class="table table-bordered">                       
                         <tbody>
                             <tr>
-                                <td>City Name</td>
+                                <td>User Full Name</td>
                                 <td>
-                                    <input type="hidden" id="id" name="id" value="" class="form-control" />
-                                    <input type="text" id="city" name="city" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+                                    
+                                    <input type="text" id="ufname" name="ufname" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
                                 <span style="color:red;"><?php echo form_error('title');?></span>
                                 </td>
                             </tr> 
 							       <tr>
-                                <td>Select State</td>
+                                <td>Select User Type</td>
                                 <td>
-                                    <input type="hidden" id="id" name="id" value="" class="form-control" />
-               <select class="form-control" name="state" id="state" required="" onchange="">
-								<option value="">--Select State--</option>
+                                 
+               <select class="form-control" name="utype" id="utype" required="" onchange="">
+								<option value="">--Select User Type--</option>
 								    <?php
-                                    for($i=0;$i<count($state_list);$i++)
+                                    for($i=0;$i<count($user_type);$i++)
                                     {
                                 ?>
-                                <option value="<?=$state_list[$i]['state_id']?>"><?=$state_list[$i]['state_name']?></option>
+                                <option value="<?=$user_type[$i]['type_id']?>"><?=$user_type[$i]['user_type']?></option>
                                 <?php
                                     }
                                 ?>
@@ -65,7 +65,53 @@
                                 <span style="color:red;"><?php echo form_error('title');?></span>
                                 </td>
                             </tr> 
-                          <tr>
+                         
+	       <tr>
+                                <td>Select School</td>
+                                <td>
+               <select class="form-control" name="school" id="school" required="" onchange="">
+								<option value="">--Select School--</option>
+								    <?php
+                                    for($i=0;$i<count($school_list);$i++)
+                                    {
+                                ?>
+                                <option value="<?=$school_list[$i]['school_id']?>"><?=$school_list[$i]['school_name']?></option>
+                                <?php
+                                    }
+                                ?>
+																</select>
+                                <span style="color:red;"><?php echo form_error('title');?></span>
+                                </td>
+                            </tr> 
+                         
+   <tr>
+                                <td>User Contact Number</td>
+                                <td>
+                                    <input type="text" id="ucnumber" name="ucnumber" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+                                <span style="color:red;"><?php echo form_error('title');?></span>
+                                </td>
+                            </tr> 
+
+
+							   <tr>
+                                <td>User Email</td>
+                                <td>
+                                    <input type="text" id="uemail" name="uemail" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+                                <span style="color:red;"><?php echo form_error('title');?></span>
+                                </td>
+                            </tr> 
+
+
+   <tr>
+                                <td>User Password</td>
+                                <td>
+                                    <input type="text" id="upassword" name="upassword" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+                                <span style="color:red;"><?php echo form_error('title');?></span>
+                                </td>
+                            </tr> 
+
+
+						 <tr>
                                 <td colspan="2">
                                     <center>
                                         <button class="btn btn-primary" type="submit" id="submit">Submit</button>
