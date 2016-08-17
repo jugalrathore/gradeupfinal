@@ -3,11 +3,17 @@ class Masters_model extends CI_Model
 {
     function __construct(){
         parent::__construct();
+<<<<<<< HEAD
 		   error_reporting(1);
 		   ini_set('display_errors',1);
            error_reporting(E_ALL);
+=======
+			//error_reporting(1);
+		//ini_set('display_errors',1);
+//error_reporting(E_ALL);
+>>>>>>> origin/master
     }
-      
+      //added by jugal
 
     function  list_states($state_id='')
     {
@@ -46,7 +52,7 @@ $this->db->select('mc.city_id,mc.state_id,mc.status,mc.city_name,ms.state_name')
 		
      if($city_id!="")
         {
-           	$this->db->where('ml.city_id',$city_id); 
+           	$this->db->where('mc.city_id',$city_id); 
 		}
 
 		$query = $this->db->get();
@@ -71,6 +77,166 @@ $query = $query->result_array();
 		return $query;
 		*/
     }
+	
+	
+	
+	
+	 function  list_chapter($chapter_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('mcp.chapter_id,mcp.subject_id,mcp.status,mcp.chapter_name,ms.subject_name');
+		$this->db->from('master_chapter mcp');
+		$this->db->join('master_subject ms','mcp.subject_id = ms.subject_id');
+		
+     if($chapter_id!="")
+        {
+           	$this->db->where('mcp.chapter_id',$chapter_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+	
+	
+		 function  list_concept($concept_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('mcp.concept_id,mcp.chapter_id,mcp.status,mcp.concept_name,ms.chapter_name');
+		$this->db->from('master_concept mcp');
+		$this->db->join('master_chapter ms','mcp.chapter_id = ms.chapter_id');
+		
+     if($concept_id!="")
+        {
+           	$this->db->where('mcp.concept_id',$concept_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+	
+	
+	
+			 function  list_grade($grade_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('*');
+		$this->db->from('master_grade');
+		//$this->db->join('master_chapter ms','mcp.chapter_id = ms.chapter_id');
+		
+     if($grade_id!="")
+        {
+           	$this->db->where('grade_id',$grade_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+				 function  list_user_type($user_type_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('*');
+		$this->db->from('master_user_type');
+		//$this->db->join('master_chapter ms','mcp.chapter_id = ms.chapter_id');
+		
+     if($user_type_id!="")
+        {
+           	$this->db->where('type_id',$user_type_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+					 function  list_school($school_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('*');
+		$this->db->from('master_school');
+		//$this->db->join('master_chapter ms','mcp.chapter_id = ms.chapter_id');
+		
+     if($school_id!="")
+        {
+           	$this->db->where('school_id',$school_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+	
+					 function  list_user($user_id='')
+    {
+		
+					$this->db->distinct();
+$this->db->select('mu.user_id,mu.status,mu.username,mu.password,mu.user_fullname,mu.user_contactno,mu.user_email,ms.school_name,ms.school_id,mut.type_id,mut.user_type');
+		$this->db->from('master_user mu');
+		$this->db->join('master_school ms','mu.school_id = ms.school_id','LEFT');
+		$this->db->join('master_user_type mut','mu.user_type = mut.type_id','LEFT');
+     if($user_id!="")
+        {
+           	$this->db->where('mu.user_id',$user_id); 
+		}
+
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+//exit(0);
+$query = $query->result_array();
+		
+		return $query;
+		
+
+    }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	function list_country($country_id='')
 	{
@@ -151,6 +317,7 @@ $query = $query->result_array();
    /*************Add by tapan for class*******************/
    function list_classes($class_id=''){
 
+<<<<<<< HEAD
 		$this->db->select('class_id,`class_name`, `added_by`, `added_on`, `updated_by`, `updated_on`, `status`');
 		$this->db->from('master_class');
 		  if($class_id!=""){
@@ -165,6 +332,119 @@ $query = $query->result_array();
 	function add_classes(){
 		/**********Get values************/
 		$class_name        = $this->input->post('class_name');
+=======
+		    function  list_subjects($sub_id='')
+    {
+			$this->db->select('*');
+		$this->db->from('master_subject');
+		  if($sub_id!="")
+        {
+           	$this->db->where('subject_id',$sub_id);
+        }
+		
+		$query = $this->db->get();
+		$query = $query->result_array();
+		return $query;
+		
+    }
+	
+	
+	
+	function check_avail($tablename='',$columnname1='',$columnvalue1='',$columnname2='',$columnvalue2='')
+	{
+			$this->db->select('*');
+		$this->db->from($tablename);
+		  if($columnname1!="")
+        {
+           	$this->db->where($columnname1,$columnvalue1);
+        }
+			  if($columnname2!="")
+        {
+           	$this->db->where($columnname2,$columnvalue2);
+        }
+		
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		//var_dump($query->row_array());
+		//echo count($query->row_array());
+		//exit(0);
+		
+		return count($query->row_array());
+	}
+	
+	
+	
+	
+	
+	
+				function ifexists_1param($tablename,$recordname,$recordvalue)
+	{
+$this->db->select('*');
+		$this->db->from($tablename);
+		$this->db->where($recordname,$recordvalue);
+		$query = $this->db->get();
+	
+return count($query->row_array());
+
+	}
+	
+			function ifexists_2param($tablename,$recordname,$recordvalue,$recordname2,$recordvalue2)
+	{
+$this->db->select('*');
+		$this->db->from($tablename);
+		$this->db->where($recordname,$recordvalue);
+		$this->db->where($recordname2,$recordvalue2);
+		$query = $this->db->get();
+			//echo $this->db->last_query();
+		//exit(0);
+return count($query->row_array());
+
+	}
+	
+	function ifexists_3param($tablename,$recordname,$recordvalue,$recordname2,$recordvalue2,$recordname3,$recordvalue3)
+	{
+$this->db->select('*');
+		$this->db->from($tablename);
+		$this->db->where($recordname,$recordvalue);
+		$this->db->where($recordname2,$recordvalue2);
+		$this->db->where($recordname3,$recordvalue3);
+		$query = $this->db->get();
+			//echo $this->db->last_query();
+	//	exit(0);
+	return count($query->row_array());
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	// jugal ends
+	
+	
+	/*
+>>>>>>> origin/master
 	
 		/********************************/
 
@@ -260,20 +540,7 @@ $query = $query->result_array();
     }
 	
 	
-	    function  list_ptype($mp_id='')
-    {
-			$this->db->select('*');
-		$this->db->from('master_propertytype');
-		  if($mp_id!="")
-        {
-           	$this->db->where('id',$mp_id);
-        }
-		
-		$query = $this->db->get();
-		$query = $query->result_array();
-		return $query;
-		
-    }
+
 
 		    function  list_pstatus($city_id='')
     {
@@ -304,6 +571,10 @@ $query = $query->result_array();
 		return $query;
 		
     }
+	
+	
+	
+	
 	
 			    function  list_units($unit_id='')
     {
@@ -554,5 +825,5 @@ $fplanname = $this->input->post('fplanname');
 	}
 	
 
-
+*/
 }

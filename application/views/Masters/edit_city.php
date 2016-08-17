@@ -13,6 +13,11 @@
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
+					<?php
+				//var_dump($state_list[0]);
+						//var_dump($city_details);
+				//	exit(0);
+					?>
 <!--                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" onclick="javascript:addMaster('<?=site_url($currentModule."/add")?>');" href="#"><span class="btn-label icon fa fa-plus"></span>Create Roles</a></div>                        
                     <div class="visible-xs clearfix form-group-margin"></div>                    -->
                 </div>
@@ -28,29 +33,38 @@
                         <span class="panel-title"></span>
                 </div>
                 <div class="panel-body">
+					<?php
+				
+					$invalid_auth= $this->session->flashdata('invalid_auth'); 
+				if(!empty($invalid_auth)){ echo '<div class="error-msg" style="margin-left:0%"><ul><li>'.$invalid_auth.'</li></ul></div>'; }
+			echo validation_errors('<div class="error-msg" style="margin-left:0%"><ul><li>','</li></ul></div>');
+			
+			?>
                     <div class="table-info">
-                        <?php echo form_open_multipart('Masters/add_city');?>
+                        <?php echo form_open_multipart('Masters/edit_city');?>
                             <table class="table table-bordered">                       
                         <tbody>
                             <tr>
                                 <td>City Name</td>
                                 <td>
                                     <input type="hidden" id="id" name="id" value="" class="form-control" />
-             <input type="text" id="city" name="city" class="form-control" value="<?=isset($city_details['city_name'])?$city_details['city_name']:''?>" /> 
+             <input type="text" id="city" name="city" class="form-control" value="<?php echo $city_details[0]['city_name'];?>" /> 
+			  <input type="hidden" id="rid" name="rid" value="<?php echo $city_details[0]['city_id'] ?>" class="form-control" />
                                 <span style="color:red;"><?php echo form_error('title');?></span>
                                 </td>
                             </tr> 
 							       <tr>
                                 <td>Select State</td>
                                 <td>
-                                    <input type="hidden" id="id" name="id" value="" class="form-control" />
+                                   
                <select class="form-control" name="state" id="state" required="" onchange="">
 								<option value="">--Select State--</option>
 								    <?php
                                     for($i=0;$i<count($state_list);$i++)
                                     {
                                 ?>
-     <option value="<?=$state_list[$i]['state_id']?>" <?php if($state_list[$i]['state_id']==$city_details['state_id']){echo "selected";}  ?>><?=$state_list[$i]['state_name']?></option>
+     <option value="<?=$state_list[$i]['state_id']?>" <?php if($state_list[$i]['state_id']==$city_details[0]['state_id']){echo "selected";}  ?>>
+	 <?=$state_list[$i]['state_name']?></option>
                                 <?php
                                     }
                                 ?>

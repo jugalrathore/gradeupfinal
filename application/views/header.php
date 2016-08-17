@@ -108,10 +108,46 @@
 								</li>
 								
 								
+								
+								
 								<li class="mm-dropdown">
 								<a tabindex="-1" href="<?=base_url()?>Masters/list_city" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">City</span><span class="label label-info"></span></a>
 								
 								</li>
+								
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_subjects" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Subjects</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_chapter" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Chapters</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_concept" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Concepts</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+								<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_grade" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Grade</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_user_type" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">User Types</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+									<li class="mm-dropdown">
+								<a tabindex="-1" href="<?=base_url()?>Masters/list_user" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Users</span><span class="label label-info"></span></a>
+								
+								</li>
+								
+								
+								
 									<li class="mm-dropdown">
 								<a tabindex="-1" href="<?=base_url()?>Masters/list_location" lc_data="own" lc_model="centers" lc_link="yes"><i class="menu-icon fa fa-dribbble"></i><span class="mm-text">Location</span><span class="label label-info"></span></a>
 								

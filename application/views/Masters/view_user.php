@@ -9,15 +9,15 @@
 <div id="content-wrapper">
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>        
-        <li class="active"><a href="#">City Master</a></li>
+        <li class="active"><a href="#">User Master</a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;City Master</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;User Master</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
-                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="<?=base_url($currentModule."/add_city")?>"><span class="btn-label icon fa fa-plus"></span>Add City</a></div>                        
+                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" href="<?=base_url($currentModule."/add_user")?>"><span class="btn-label icon fa fa-plus"></span>Add User</a></div>                        
                     <div class="visible-xs clearfix form-group-margin"></div>
                     <form class="pull-right col-xs-12 col-sm-6" action="">
                         <div class="input-group no-margin">
@@ -47,7 +47,7 @@
 
                 <div class="panel">
                 <div class="panel-heading">
-                        <span class="panel-title">City List</span>
+                        <span class="panel-title">User List</span>
                         <div class="holder"></div>
                 </div>
                 <div class="panel-body">
@@ -63,24 +63,35 @@
                         <thead>
                             <tr>
                                     <th>Sr. No.</th>
-                                    <th>City Name</th>
-                                 <th>State Name</th>
+                                    <th>User Full Name</th>
+                                 <th>User Name</th>
+								  <!-- <th>Password</th>-->
+								     <th>User Type</th>
+									   <th>School</th>
+									     <th>User Contact Number</th>
+										   <th>User Email</th>
                                <th>Options</th>
                             </tr>
                         </thead>
                         <tbody id="itemContainer">
                             <?php
                             $j=1;
-                            for($i=0;$i<count($city_list);$i++)
+                            for($i=0;$i<count($user_list);$i++)
                             {
                             ?>
-                            <tr <?=$city_list[$i]["status"]=="N"?"style='background-color:#FBEFF2'":""?>>
+                            <tr <?=$user_list[$i]["status"]=="N"?"style='background-color:#FBEFF2'":""?>>
                                 <td><?=$j?></td>
-                                <td><?=$city_list[$i]['city_name']?></td>
-                          <td><?=$city_list[$i]['state_name']?></td>
+                                <td><?=$user_list[$i]['user_fullname']?></td>
+                         <td><?=$user_list[$i]['username']?></td>
+						<!-- <td><?=$user_list[$i]['password']?></td>-->
+						 <td><?=$user_list[$i]['user_type']?></td>
+						 <td><?=$user_list[$i]['school_name']?></td>
+						 <td><?=$user_list[$i]['user_contactno']?></td>
+						 <td><?=$user_list[$i]['user_email']?></td>
+					
                               <td>
-                                    <a href="<?=base_url($currentModule."/edit_city/".$city_list[$i]['city_id'])?>"><i class="fa fa-edit"></i></a>                                                                        
-                                    <a href='<?=$city_list[$i]["status"]=="Y"?"disable/".$city_list[$i]["city_id"]:"enable/".$city_list[$i]["city_id"]?>'><i class='fa <?=$city_list[$i]["status"]=="Y"?"fa-ban":"fa-check"?>' title='<?=$city_list[$i]["status"]=="Y"?"Disable":"Enable"?>'></i></a>
+                                    <a href="<?=base_url($currentModule."/edit_user/".$user_list[$i]['user_id'])?>"><i class="fa fa-edit"></i></a>                                                                        
+                                    <a href='<?=$user_list[$i]["status"]=="Y"?"disable/".$user_list[$i]["chapter_id"]:"enable/".$user_list[$i]["chapter_id"]?>'><i class='fa <?=$user_list[$i]["status"]=="Y"?"fa-ban":"fa-check"?>' title='<?=$user_list[$i]["status"]=="Y"?"Disable":"Enable"?>'></i></a>
                                 </td>
                             </tr>
                             <?php

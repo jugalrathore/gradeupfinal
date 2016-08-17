@@ -5,15 +5,15 @@
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>
         <li><a href="#">Masters</a></li>
-        <li class="active"><a href="#">Add Project Type</a></li>
+        <li class="active"><a href="#">Edit Grade </a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Add Project type</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Edit Grade</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
-<!--                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" onclick="javascript:addMaster('<?=site_url($currentModule."/add")?>');" href="#"><span class="btn-label icon fa fa-plus"></span>Create Roles</a></div>                        
+<!--                    <div class="pull-right col-xs-12 col-sm-auto"><a style="width: 100%;" class="btn btn-primary btn-labeled" onclick="javascript:addMaster('<?=site_url($currentModule."/add_subject")?>');" href="#"><span class="btn-label icon fa fa-plus"></span>Create Roles</a></div>                        
                     <div class="visible-xs clearfix form-group-margin"></div>                    -->
                 </div>
             </div>
@@ -24,27 +24,48 @@
         <div class="row ">
             <div class="col-sm-12">
                 <div class="panel">
+						<?php
+				
+					$invalid_auth= $this->session->flashdata('invalid_auth'); 
+				if(!empty($invalid_auth)){ echo '<div class="error-msg" style="margin-left:0%"><ul><li>'.$invalid_auth.'</li></ul></div>'; }
+			echo validation_errors('<div class="error-msg" style="margin-left:0%"><ul><li>','</li></ul></div>');
+			
+			?>
                 <div class="panel-heading">
-                        <span class="panel-title">Project Type Details</span>
+                        <span class="panel-title">Edit Grade</span>
                 </div>
                 <div class="panel-body">
                     <div class="table-info">
-                        <?php echo form_open_multipart('Masters/add_ptype');?>
+                        <?php echo form_open_multipart('Masters/edit_grade');?>
                             <table class="table table-bordered">                       
                         <tbody>
                             <tr>
-                                <td>Project Type</td>
+                                <td>Difficulty Level</td>
                                 <td>
                                     <input type="hidden" id="id" name="id" value="" class="form-control" />
-                                    <input type="text" id="ptype" name="ptype" class="form-control" value="<?=isset($_REQUEST['title'])?$_REQUEST['title']:''?>" /> 
+                      <input type="text" id="grade" name="grade" class="form-control" value="<?php echo $grade_details[0]['grade_level'] ?>" /> 
+					   <input type="hidden" id="subid" name="subid" class="form-control" value="<?php echo $grade_details[0]['grade_id'] ?>" /> 
                                 <span style="color:red;"><?php echo form_error('title');?></span>
                                 </td>
                             </tr> 
-                          <tr>
+                          
+						      <tr>
+                                <td>Marks</td>
+                                <td>
+                                    <input type="hidden" id="id" name="id" value="" class="form-control" />
+                      <input type="text" id="marks" name="marks" class="form-control" value="<?php echo $grade_details[0]['grade_marks'] ?>" /> 
+					        <span style="color:red;"><?php echo form_error('title');?></span>
+                                </td>
+                            </tr> 
+                        
+						  
+						  
+						  
+						  <tr>
                                 <td colspan="2">
                                     <center>
                                         <button class="btn btn-primary" type="submit" id="submit">Submit</button>
-                                        <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/view")?>'" id="cancel">Cancel</button>
+                      <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/view")?>'" id="cancel">Cancel</button>
                                     </center>
                                 </td>
                             </tr>
