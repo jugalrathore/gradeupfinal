@@ -8,10 +8,10 @@ class Masters extends CI_Controller{
    
     public function __construct() 
     {
-<<<<<<< HEAD
+
         global $menudata;
         parent:: __construct();
-=======
+
 
 		//exit(0);
 	//	ini_set('display_errors', 1);
@@ -26,7 +26,7 @@ class Masters extends CI_Controller{
 // Report all errors
 //error_reporting(E_ALL);
 
->>>>>>> origin/master
+
         $this->load->helper("url");		
         $this->load->library('form_validation');
         
@@ -53,23 +53,8 @@ class Masters extends CI_Controller{
 //$this->load->view('footer');
     }
 	
-<<<<<<< HEAD
 	function list_country()
-=======
-	
-	
-	
-	//added by jugal
-	
-	
-	
-	
-	
-	
-	
-	
-			function list_country()
->>>>>>> origin/master
+
 	{ 
 
 	    $this->load->view('header',$this->data);        
@@ -366,14 +351,7 @@ class Masters extends CI_Controller{
 
 	/************end by tapan********************/
 	
-<<<<<<< HEAD
-	function list_states()
-	{ 
 
-		$this->load->view('header',$this->data);        
-        $this->data['state_details']=$this->Masters_model->list_states();
-        $this->load->view('Masters/list_states',$this->data);
-=======
 			function list_states()
 	{ 
 
@@ -596,30 +574,6 @@ $this->form_validation->set_rules('concept', 'Concept Name', 'trim|required');
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		function add_chapter()
 	{ 
 	
@@ -752,15 +706,6 @@ $this->form_validation->set_rules('chapter', 'Chapter Name', 'trim|required');
 		}
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
