@@ -182,28 +182,28 @@ $query = $query->result_array();
     }
 	
 	
-					 function  list_school($school_id='')
-    {
-		
-					$this->db->distinct();
-$this->db->select('*');
-		$this->db->from('master_school');
-		//$this->db->join('master_chapter ms','mcp.chapter_id = ms.chapter_id');
-		
-     if($school_id!="")
-        {
-           	$this->db->where('school_id',$school_id); 
-		}
+	function  list_school($school_id='')
+	{
 
-		$query = $this->db->get();
-		//echo $this->db->last_query();
-//exit(0);
-$query = $query->result_array();
-		
-		return $query;
-		
+	//$this->db->distinct();
+	$this->db->select('*');
+	$this->db->from('master_school as ms');
+	$this->db->join('master_city as  mc','ms.city_id = mc.city_id');
 
-    }
+	if($school_id!="")
+	{
+	$this->db->where('school_id',$school_id); 
+	}
+
+	$query = $this->db->get();
+	//echo $this->db->last_query();
+	//exit(0);
+	$query = $query->result_array();
+
+	return $query;
+
+
+	}
 	
 	
 	
@@ -374,33 +374,32 @@ $query = $query->result_array();
 	
 	
 	
-				function ifexists_1param($tablename,$recordname,$recordvalue)
-	{
-$this->db->select('*');
+	function ifexists_1param($tablename,$recordname,$recordvalue){
+        $this->db->select('*');
 		$this->db->from($tablename);
 		$this->db->where($recordname,$recordvalue);
+
 		$query = $this->db->get();
-	
-return count($query->row_array());
+		echo $this->db->last_query();
+        return count($query->row_array());
 
 	}
 	
-			function ifexists_2param($tablename,$recordname,$recordvalue,$recordname2,$recordvalue2)
-	{
-$this->db->select('*');
+	function ifexists_2param($tablename,$recordname,$recordvalue,$recordname2,$recordvalue2){
+		$this->db->select('*');
 		$this->db->from($tablename);
 		$this->db->where($recordname,$recordvalue);
 		$this->db->where($recordname2,$recordvalue2);
 		$query = $this->db->get();
 			//echo $this->db->last_query();
 		//exit(0);
-return count($query->row_array());
+         return count($query->row_array());
 
 	}
 	
 	function ifexists_3param($tablename,$recordname,$recordvalue,$recordname2,$recordvalue2,$recordname3,$recordvalue3)
 	{
-$this->db->select('*');
+        $this->db->select('*');
 		$this->db->from($tablename);
 		$this->db->where($recordname,$recordvalue);
 		$this->db->where($recordname2,$recordvalue2);
@@ -408,7 +407,7 @@ $this->db->select('*');
 		$query = $this->db->get();
 			//echo $this->db->last_query();
 	//	exit(0);
-	return count($query->row_array());
+	   return count($query->row_array());
 
 	}
 	
@@ -477,13 +476,14 @@ $this->db->select('*');
 	}
 
     function list_divisions($division_id=''){
-        $this->db->select('`division_id`, `class_id`, `division_name`, `added_by`, `added_on`, `updated_by`, `updated_on`, `status`');
+        $this->db->select('`division_id`, `division_name`, `added_by`, `added_on`, `updated_by`, `updated_on`, `status`');
 		$this->db->from('master_division');
 		  if($division_id!=""){
            	$this->db->where('division_id',$division_id);
         }
 		//$this->db->where('status','1');
 		$query = $this->db->get();
+	//	  echo $this->db->last_query(); //To print the query
 		$query = $query->result_array();
         //echo $this->db->last_query(); //To print the query
 		
@@ -494,11 +494,11 @@ $this->db->select('*');
 
         /**********Get values************/
 		$division_name        = $this->input->post('division_name');
-		$class_id        = $this->input->post('class_id');
+	
 		/********************************/
 
 		$data=array(
-			'class_id'     => $class_id,
+		
 			'division_name'     => $division_name,
 		);
 		
@@ -509,6 +509,32 @@ $this->db->select('*');
 			//insert goes here     
 
 
+	}
+
+	function edit_division($division_id){
+
+	
+		/**********Get values************/
+		$division_name        = $this->input->post('division_name');
+		$class_id        = $this->input->post('class_id');
+		/********************************/
+
+		$data=array(
+			
+			'division_name'     => $division_name,
+		);
+		
+		$this->db->where('division_id', $division_id);
+     
+		$query = $this->db->update('master_division', $data);
+       //echo $this->db->last_query();
+		if($this->db->affected_rows() >=0){
+		  return 1; // your code
+		}else{
+		  return 0; // your code. 
+		}
+
+    
 	}
 
 	

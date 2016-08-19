@@ -207,12 +207,21 @@ class Masters extends CI_Controller{
 
 		if($this->form_validation->run() == FALSE){
 			$this->data['classes_list']=$this->Masters_model->list_classes();
+			//print_r($this->data['classes_list']);
  		    $this->load->view('Masters/add_classes',$this->data);
         }else{
 
 			$this->data['classes_list']=$this->Masters_model->list_classes();
+			$class_name        = $this->input->post('class_name');
+			//print_r($this->data['classes_list']);
+
+			$this->data['cnt']=$this->Masters_model->ifexists_1param('master_class','class_name',$class_name);
+
+			if($this->data['cnt']==0){
+
 			$this->data['classes_sucess']=$this->Masters_model->add_classes();
-			if($this->data['classes_sucess']>0){
+			}
+			if(!empty($this->data['classes_sucess'])>0){
 			
               redirect('Masters/list_classes');	
 			}
@@ -242,8 +251,18 @@ class Masters extends CI_Controller{
  		    $this->load->view('Masters/edit_classes',$this->data);
         }else{
 
+			
+
 			$this->data['classes_list']=$this->Masters_model->list_classes($class_id);
+			$class_name        = $this->input->post('class_name');
+			//print_r($this->data['classes_list']);
+
+			$this->data['cnt']=$this->Masters_model->ifexists_1param('master_class','class_name',$class_name);
+			if($this->data['cnt']==0){
+
 			$this->data['succcess']=$this->Masters_model->update_classes($class_id);
+			}
+			
 			if($this->data['succcess']==1){
 			
               redirect('Masters/list_classes');	
@@ -275,12 +294,6 @@ class Masters extends CI_Controller{
                 'field' => 'division_name',
                 'label' => 'Division Name',
                 'rules' => 'trim|required|xss_clean'
-        ),
-        array(
-                'field' => 'class_id',
-                'label' => 'Class Name',
-                'rules' => 'trim|required|xss_clean'
-                
         )
 );
 
@@ -292,7 +305,15 @@ class Masters extends CI_Controller{
         }else{
 
 			$this->data['classes_list']=$this->Masters_model->list_classes();
+			$division_name        = $this->input->post('division_name');
+			//print_r($this->data['classes_list']);
+
+			$this->data['cnt']=$this->Masters_model->ifexists_1param('master_division','division_name',$division_name);
+			if($this->data['cnt']==0){
+
 			$this->data['success']=$this->Masters_model->add_division();
+			}
+			
 			if($this->data['success']>0){
 			
               redirect('Masters/list_divisions');	
@@ -315,24 +336,26 @@ class Masters extends CI_Controller{
                 'field' => 'division_name',
                 'label' => 'Division Name',
                 'rules' => 'trim|required|xss_clean'
-        ),
-        array(
-                'field' => 'class_id',
-                'label' => 'Class Name',
-                'rules' => 'trim|required|xss_clean'
-                
         )
 );
 
         $this->form_validation->set_rules($config);
+        $division_id=$this->uri->segment(3);
 
+		$this->data['division_details']=$this->Masters_model->list_divisions($division_id);
+		$this->data['classes_list']=$this->Masters_model->list_classes();
 		if($this->form_validation->run() == FALSE){
-			$this->data['classes_list']=$this->Masters_model->list_classes();
+			
  		    $this->load->view('Masters/edit_divisions',$this->data);
         }else{
+			$division_name        = $this->input->post('division_name');
+			//print_r($this->data['classes_list']);
 
-			$this->data['classes_list']=$this->Masters_model->list_classes();
-			$this->data['success']=$this->Masters_model->edit_division();
+			$this->data['cnt']=$this->Masters_model->ifexists_1param('master_division','division_name',$division_name);
+			if($this->data['cnt']==0){
+			$this->data['success']=$this->Masters_model->edit_division($division_id);
+			}
+			
 			if($this->data['success']==1){
 			
               redirect('Masters/list_divisions');	
@@ -350,8 +373,7 @@ class Masters extends CI_Controller{
 	/************end by tapan********************/
 	
 
-			function list_states()
-	{ 
+	function list_states(){ 
 
 		   $this->load->view('header',$this->data);        
         $this->data['state_details']=$this->Masters_model->list_states();
@@ -360,12 +382,7 @@ class Masters extends CI_Controller{
 
 	}
 	
-	
-	
-	
-	
-		function list_city()
-	{ 
+	function list_city(){ 
 
 		   $this->load->view('header',$this->data);        
         $this->data['city_list']=$this->Masters_model->list_city();
@@ -375,8 +392,7 @@ class Masters extends CI_Controller{
 	}
 	
 	
-			function list_chapter()
-	{ 
+			function list_chapter(){ 
 
 		   $this->load->view('header',$this->data);        
         $this->data['chapter_list']=$this->Masters_model->list_chapter();
@@ -1317,40 +1333,12 @@ $this->form_validation->set_rules('city', 'City Name', 'trim|required');
 			 redirect('Masters/list_grade');	
 			}
 			
-		
-		
-		
-		
-		
-			
 		}
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			function add_subject()
-	{
+		
+	function add_subject(){
 		$this->form_validation->set_rules('subject', 'Subject Name', 'trim|required');
 			if($this->form_validation->run() == FALSE)
 		{
@@ -1458,34 +1446,12 @@ $this->form_validation->set_rules('city', 'City Name', 'trim|required');
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-					function list_subjects()
+	function list_subjects()
 	{ 
-   $this->load->view('header',$this->data);        
-$this->data['subject_details']=$this->Masters_model->list_subjects();
-        $this->load->view('Masters/view_subject',$this->data);
-		
-        $this->load->view('footer');
+		$this->load->view('header',$this->data);        
+		$this->data['subject_details']=$this->Masters_model->list_subjects();
+		$this->load->view('Masters/view_subject',$this->data);
+		$this->load->view('footer');
 
 	}
 	
