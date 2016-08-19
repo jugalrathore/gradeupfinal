@@ -254,7 +254,7 @@ $query = $query->result_array();
     }
 	
    /*************Add by tapan for school*******************/
-    function list_school($school_id=''){
+   /* function list_school($school_id=''){
 		$this->db->select('`school_id`,`city_id`, `school_name`, `affiliate`, `address`, `added_by`, `added_on`, `updated_by`, `updated_on`,`status`');
 		$this->db->from('master_school');
 		  if($school_id!=""){
@@ -265,7 +265,7 @@ $query = $query->result_array();
 		$query = $query->result_array();
 		return $query;
     }
-
+*/
 	function add_school(){
 
 		/**********Get values************/
