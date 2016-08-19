@@ -5,11 +5,11 @@
     <ul class="breadcrumb breadcrumb-page">
         <div class="breadcrumb-label text-light-gray">You are here: </div>
         <li><a href="#">Masters</a></li>
-        <li class="active"><a href="#">Add Classes</a></li>
+        <li class="active"><a href="#">Edit Division</a></li>
     </ul>
     <div class="page-header">			
         <div class="row">
-            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Add Classes</h1>
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm"><i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Edit Division</h1>
             <div class="col-xs-12 col-sm-8">
                 <div class="row">                    
                     <hr class="visible-xs no-grid-gutter-h">
@@ -27,33 +27,30 @@
                 <div class="panel-heading">
                         <span class="panel-title"></span>
                 </div>
-
                 <div class="panel-body">
                     <div class="table-info">
-					<div class="error">
 					<?php
 					if($cnt>0){
-					echo"The Class You Want To Add Is Already exist";	
+					echo"The Division You Want To Add Is Already exist";	
 				     }
 					?>
-					</div>
-                        <?php echo form_open_multipart('Masters/add_classes');?>
+                        <?php echo form_open_multipart('Masters/edit_divisions/'.$this->uri->segment(3).'');?>
                             <table class="table table-bordered">                       
                         <tbody>
                             <tr>
-                                <td>Class Name</td>
+                                <td>Division Name</td>
                                 <td>
                                     <input type="hidden" id="id" name="id" value="" class="form-control" />
-                                    <input type="text" id="class_name" name="class_name" class="form-control" value="<?=isset($_REQUEST['class_name'])?$_REQUEST['class_name']:''?>" /> 
-                                <span style="color:red;"><?php echo form_error('class_name');?></span>
+                                    <input type="text" id="division_name" name="division_name" class="form-control" value="<?=isset($_REQUEST['division_name'])?$_REQUEST['division_name']:$division_details[0]['division_name']?>" /> 
+                                <span style="color:red;"><?php echo form_error('division_name');?></span>
                                 </td>
                             </tr> 
-							   
-
+							      
+							<tr>
                                 <td colspan="2">
                                     <center>
                                         <button class="btn btn-primary" type="submit" id="submit">Submit</button>
-                                        <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/list_classes")?>'" id="cancel">Cancel</button>
+                                        <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/list_divisions")?>'" id="cancel">Cancel</button>
                                     </center>
                                 </td>
                             </tr>

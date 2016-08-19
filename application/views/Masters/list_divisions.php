@@ -34,7 +34,7 @@
                             <tr>
                                     <th>Sr. No.</th>
 									<th>Division Name</th>
-									<th>Class Name</th>
+								
                                     <th>Added By</th> 
 									<th>Added On</th>  
 									<th>Updated By</th> 
@@ -54,7 +54,7 @@
                             <tr <?=$division_details[$i]["status"]=="0"?"style='background-color:#FBEFF2'":""?>>
                                 <td><?=$j?></td>
 								<td><?=$division_details[$i]['division_name']?></td>
-								<td><?=$division_details[$i]['class_id']?></td>
+								
 								<td><?=$division_details[$i]['added_by']?></td>
 								<td><?=$division_details[$i]['added_on']?></td>
 								<td><?=$division_details[$i]['updated_by']?></td>

@@ -29,6 +29,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-info">
+					<div class="error">
+					<?php
+					if($cnt>0){
+					echo"The Class You Want To Add Is Already exist";	
+				     }
+					?>
+					</div>
                         <?php echo form_open_multipart('Masters/edit_classes/'.$this->uri->segment(3).'');?>
                             <table class="table table-bordered">                       
                         <tbody>

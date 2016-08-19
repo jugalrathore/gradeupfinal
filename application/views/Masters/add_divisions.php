@@ -29,6 +29,11 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-info">
+					<?php
+					if($cnt>0){
+					echo"The Division You Want To Add Is Already exist";	
+				     }
+					?>
                         <?php echo form_open_multipart('Masters/add_divisions');?>
                             <table class="table table-bordered">                       
                         <tbody>
@@ -40,29 +45,12 @@
                                 <span style="color:red;"><?php echo form_error('division_name');?></span>
                                 </td>
                             </tr> 
-							       <tr>
-                                <td>Select City</td>
-                                <td>
-                                    <input type="hidden" id="id" name="id" value="" class="form-control" />
-               <select class="form-control" name="class_id" id="class_id">
-								<option value="">--Select Class--</option>
-								    <?php
-                                    for($i=0;$i<count($classes_list);$i++)
-                                    {
-                                ?>
-                                <option value="<?=$classes_list[$i]['class_id']?>"><?=$classes_list[$i]['class_name']?></option>
-                                <?php
-                                    }
-                                ?>
-																</select>
-                                <span style="color:red;"><?php echo form_error('class_id');?></span>
-                                </td>
-                        
+							     
 							<tr>
                                 <td colspan="2">
                                     <center>
                                         <button class="btn btn-primary" type="submit" id="submit">Submit</button>
-                                        <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/add_school")?>'" id="cancel">Cancel</button>
+                                        <button class="btn btn-primary" type="button" onclick="window.location='<?=base_url($currentModule."/list_divisions")?>'" id="cancel">Cancel</button>
                                     </center>
                                 </td>
                             </tr>

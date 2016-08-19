@@ -46,20 +46,16 @@
                         </thead>
                         <tbody id="itemContainer">
                             <?php
-							
-	
-
-                            $j=1;
+		                    $j=1;
                             for($i=0;$i<count($school_details);$i++)
                             {
                             ?>
                             <tr <?=$school_details[$i]["status"]=="0"?"style='background-color:#FBEFF2'":""?>>
                                 <td><?=$j?></td>
 								<td><?=$school_details[$i]['school_name']?></td>
-								<td><?=$school_details[$i]['city_id']?></td>
+								<td><?=$school_details[$i]['city_name']?></td>
 								<td><?=$school_details[$i]['affiliate']?></td>
 								<td><?=$school_details[$i]['address']?></td>
-
 								<td><?=$school_details[$i]['added_by']?></td>
 								<td><?=$school_details[$i]['added_on']?></td>
 								<td><?=$school_details[$i]['updated_by']?></td>
